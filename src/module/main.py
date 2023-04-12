@@ -30,7 +30,6 @@ def main():
         logging.info(f"Профессия спарсена {profession.Id}: {profession.Title}")
         print(f"Профессия спарсена {profession.Id}: {profession.Title}")
         storage.SetParsedToProfession(profession.Id)
-        break
     
     print(f"Time: {time.perf_counter() - start} seconds.")
 
