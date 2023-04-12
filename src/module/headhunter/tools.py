@@ -32,7 +32,7 @@ def get_count_of_resumes(url: str) -> int:
         return int(re.findall("\d+", finded[0])[0])
     except BaseException as err:
         print(f"Ошибка при подсчете резюме по адресу '{url}'. Ошибка: {err}")
-        exit(text)
+        return 0
 
 def get_soup(url: str) -> BeautifulSoup:
     try:
