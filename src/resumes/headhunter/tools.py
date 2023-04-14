@@ -31,7 +31,7 @@ def get_count_of_resumes(url: str) -> int:
         finded = re.findall("Найдено.*?резюме", text)
         return int(re.findall("\d+", finded[0])[0])
     except BaseException as err:
-        print(f"Ошибка при подсчете резюме по адресу '{url}'. Ошибка: {err}")
+        logging.error(f"Ошибка при подсчете резюме по адресу '{url}'. Ошибка: {err}")
         return 0
 
 def get_soup(url: str) -> BeautifulSoup:
@@ -50,6 +50,6 @@ def get_count_of_pages(url: str) -> int:
         count = int(soup.find_all("a", attrs={"data-qa": "pager-page"})[-1].text)
     except BaseException as err:
         count = 1
-        print(f"Не удалось посчитать количество страниц: {err} {url}")
+        logging.error(f"Не удалось посчитать количество страниц: {err} {url}")
     finally:
         return count

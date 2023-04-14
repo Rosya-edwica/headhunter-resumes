@@ -19,10 +19,11 @@ headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/53
 # FIXME Отформатировать зарплату и приводить ее к рублям
 
 class Scraper:
-    def __init__(self, url: str, positionId: int, date_update: str = ""):
+    def __init__(self, url: str, positionId: int, city_id: int, date_update: str = ""):
         self.Url = re.split("\?.*?", url)[0]
         self.DateUpdate = date_update
         self.PositionId = positionId
+        self.CityId = city_id
         self.soup = self.__get_soup()
         self.Id = self.__get_id()
 
@@ -56,7 +57,8 @@ class Scraper:
             Url=self.Url,
             PositionId=self.PositionId,
             DateUpdate=self.DateUpdate,
-            CityId=self.__get_city(),
+            CityId=self.CityId,
+            City=self.__get_city(),
             Title=self.__get_title(),
             Skills=self.__get_skills(),
             Salary=self.__get_salary().Digit,

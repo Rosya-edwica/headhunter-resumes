@@ -23,8 +23,9 @@ CREATE TABLE city(
 
 CREATE TABLE resume(
     id varchar(255) not null,
-    city varchar(255) not null,
     position_id integer not null,
+    city_id integer not null default 'Россия',
+    city varchar(255) not null,
     title text not null,
     salary integer,
     currency varchar(10),
@@ -37,7 +38,7 @@ CREATE TABLE resume(
 
     primary key(id),
     foreign key(position_id) references position(id),
-    foreign key(city) references city(name)
+    foreign key(city_id) references city(id_edwica)
 );
 
 create table experience_step(

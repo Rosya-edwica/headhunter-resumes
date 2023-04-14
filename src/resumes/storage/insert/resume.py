@@ -9,8 +9,8 @@ def AddResume(resume: Resume) -> bool:
     connection = connect()
     try:
         cursor = connection.cursor()
-        query = f"""INSERT INTO {TABLE_RESUME}(id, city, position_id, title, salary, currency, specializations, experience_in_months, languages, skills, date_update, url)
-            VALUES('{resume.Id}', '{resume.CityId}', {resume.PositionId}, '{resume.Title}', {resume.Salary}, '{resume.Currency}', '{'|'.join(resume.Specialization)}',
+        query = f"""INSERT INTO {TABLE_RESUME}(id, city_id, city, position_id, title, salary, currency, specializations, experience_in_months, languages, skills, date_update, url)
+            VALUES('{resume.Id}', {resume.CityId}, '{resume.City}', {resume.PositionId}, '{resume.Title}', {resume.Salary}, '{resume.Currency}', '{'|'.join(resume.Specialization)}',
             {resume.ExperienceDuration}, '{'|'.join(resume.Languages)}', '{'|'.join(resume.Skills)}', '{resume.DateUpdate}', '{resume.Url}')"""
         cursor.execute(query)
         connection.commit()

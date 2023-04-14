@@ -3,6 +3,7 @@ from typing import NamedTuple
 class Resume(NamedTuple):
     Id: int
     CityId: int
+    City: str
     PositionId: int
     Title: str
     Salary: int
